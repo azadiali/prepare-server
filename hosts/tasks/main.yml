@@ -1,0 +1,15 @@
+---
+- name: Add the inventory into /etc/hosts
+  ansible.builtin.lineinfile:
+      path: /etc/hosts
+      line: "{{ hostvars[item]['ansible_default_ipv4']['address'] }} {{ hostvars[item]['ansible_hostname'] }}"
+  with_items:
+      - "{{ groups['azkivam'] }}"
+
+  become: true
+- name: Add the ntp into /etc/hosts
+  ansible.builtin.lineinfile:
+      path: /etc/hosts
+      line: "192.168.1.1 ntp"
+  become: true
+

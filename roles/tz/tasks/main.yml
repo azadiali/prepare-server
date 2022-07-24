@@ -1,0 +1,14 @@
+---
+#- name: copy timezone file
+#  copy:
+#    src: /usr/share/zoneinfo/Asia/Tehran
+#    dest: /etc/localtime
+#  become: true
+
+#- name: set timezone
+#  command: /usr/bin/timedatectl set-timezone Asia/Tehran
+#  become: true
+- name: Set timezone to Asia/Tehran
+  timezone:
+    name: Asia/Tehran
+  become: true

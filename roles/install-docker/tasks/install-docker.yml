@@ -1,0 +1,37 @@
+---
+- name: apt update
+  shell: apt-get update  
+  become: true
+- name: install packages for https 
+  shell: apt-get install -y ca-certificates curl gnupg lsb-release
+  become: true
+- name: create directory for keyrings
+  shell: mkdir -p /etc/apt/keyrings
+  become: true
+- name: shecan
+  shell: echo "nameserver 185.51.200.2" > /etc/resolv.conf
+  become: true
+- name: download docker keyrings
+  shell: curl -fsSL https://download.docker.com/linux/debian/gpg | gpg --dearmor -o /etc/apt/keyrings/docker.gpg
+  become: true
+- name: shecan
+  shell: echo "nameserver 185.51.200.2" > /etc/resolv.conf
+  become: true
+- name: install docker gpg key
+  shell: echo  "deb [arch=$(dpkg --print-architecture) signed-by=/etc/apt/keyrings/docker.gpg] https://download.docker.com/linux/debian $(lsb_release -cs) stable" | tee /etc/apt/sources.list.d/docker.list > /dev/null
+  become: true
+- name: shecan
+  shell: echo "nameserver 185.51.200.2" > /etc/resolv.conf
+  become: true
+- name: apt update for docker repo
+  shell: apt-get update
+  become: true
+- name: shecan
+  shell: echo "nameserver 185.51.200.2" > /etc/resolv.conf
+  become: true
+- name: install docker
+  shell: apt-get install -y docker-ce docker-ce-cli containerd.io docker-compose-plugin
+  become: true
+- name: add support to docker group
+  shell: usermod -aG docker support
+  become: true

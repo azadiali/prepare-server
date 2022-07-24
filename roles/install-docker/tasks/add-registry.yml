@@ -1,0 +1,5 @@
+- name: copy docker daemon.json
+  copy:
+    src: files/daemon.json
+    dest: /etc/docker/daemon.json
+  become: true

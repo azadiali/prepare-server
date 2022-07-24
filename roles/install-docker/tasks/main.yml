@@ -1,0 +1,8 @@
+---
+- include: install-docker.yml
+
+- include: add-user.yml
+
+- include: install-docker-compose.yml
+
+- include: add-registry.yml

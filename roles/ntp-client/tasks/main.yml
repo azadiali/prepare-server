@@ -1,0 +1,16 @@
+---
+- name: Add ntp server to /etc/systemd/timesyncd.conf
+  ansible.builtin.lineinfile:
+      path: /etc/systemd/timesyncd.conf
+      line: "FallbackNTP=ntp"
+  become: true
+
+- name: Restart service systemd-timesyncd
+  ansible.builtin.systemd:
+    state: restarted
+    name: systemd-timesyncd
+  become: true
+
+
+
+

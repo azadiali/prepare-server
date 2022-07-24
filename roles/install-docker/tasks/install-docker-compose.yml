@@ -1,0 +1,8 @@
+---
+- name: copy docker-compose
+  copy:
+    src: files/docker-compose
+    dest: /usr/local/bin/docker-compose
+    owner: support
+    mode: 0755
+  become: true

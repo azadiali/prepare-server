@@ -1,0 +1,7 @@
+---
+- name: Add remote "support" user to "docker" group
+  user:
+        name: "support"
+        groups: docker
+        append: yes
+  become: true
