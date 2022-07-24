@@ -1,28 +1,12 @@
 ---
-- hosts: azkivam-docker
+- hosts: servers
   remote_user: support
  # vars_files:
   #  - roles/product/vars/vars.yml
 
   roles:
      - tz
-    # - dns
-#    - users
-#    - docker
      - packages
-#    - nginx
-#    - lets-encrypt
-#    - monitoring
-#    - db
-#    - gluster-client
-#    - gluster-server
-#    - s3fs
-#    - s3cmd
-#    - product
-   # - test
-#    - monitor-prep
-# - hosts
- #- ntp-client
-     - docker
+     - hosts
+     - ntp-client
      - install-docker
-     - daemon-json

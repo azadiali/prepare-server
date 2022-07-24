@@ -1,0 +1,11 @@
+---
+
+- name: Install packages
+  ansible.builtin.package:
+    name:
+    - vim
+    - ncdu
+    - curl
+    - rsync
+    state: present
+  become: true
